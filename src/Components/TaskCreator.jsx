@@ -5,9 +5,10 @@ export const TaskCreator = ({createNewTask}) => {
     const [nuevaTarea, setNuevaTarea] = useState('')
 //no refresca la pagina y Limpia el input
 const handleSubmit = (e) => {
+    
     e.preventDefault();
     createNewTask(nuevaTarea)
-    localStorage.setItem('task', nuevaTarea)
+    localStorage.setItem('tasks', nuevaTarea)
     setNuevaTarea('')
 
 }
