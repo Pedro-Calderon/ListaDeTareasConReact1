@@ -13,11 +13,18 @@ const handleSubmit = (e) => {
 
 }
     return (
-        <form onSubmit={handleSubmit}>
-            <input value={nuevaTarea} type="text" placeholder='Ingresa una nueva Tarea'
-                onChange={(e) => setNuevaTarea(e.target.value)} />
+        <form onSubmit={handleSubmit} className='my-2 row'>
+           <div className='col-9'>
+           <input value={nuevaTarea} type="text" placeholder='Ingresa una nueva Tarea'
+                onChange={(e) => setNuevaTarea(e.target.value)} 
+                
+                className='form-control'/>
 
-            <button >Guardar Tarea</button>
+           </div>
+           <div className='col-3'>
+           <button className='btn btn-primary btn-sm'>Guardar Tarea</button>
+
+           </div>
         </form>
 
     )

@@ -33,30 +33,27 @@ function App() {
     localStorage.setItem('tasks', JSON.stringify(tasksItems))
   }, [tasksItems])
 
-  const deleteTask=()=>{
-    setTaskItems(tasksItems.filter(task=> !task.done))
+  const deleteTask = () => {
+    setTaskItems(tasksItems.filter(task => !task.done))
     setShowCompleted(false)
 
   }
 
   return (
-    <div className='App'>
-      <TaskCreator createNewTask={createNewTask} />
-      <TaskTable tasks={tasksItems} toggleTask={toggleTask} />
-
-      <VisibilityControl
-      setshowCompleted={(checked)=>setShowCompleted(checked) }deleteTask={deleteTask} isChecked={showCompleted}
-      />
-      {
-
-        showCompleted == true && (
-          <TaskTable tasks={tasksItems} toggleTask={toggleTask} showCompleted={showCompleted} />
-
-        )
-
-      }
-
-    </div>
+    <main className='bg-dark vh-100 text-white'>
+      <div className="container col-md-4 offset-md-4 p-4">
+        <TaskCreator createNewTask={createNewTask} />
+        <TaskTable tasks={tasksItems} toggleTask={toggleTask} />
+        <VisibilityControl
+          setshowCompleted={(checked) => setShowCompleted(checked)} deleteTask={deleteTask} isChecked={showCompleted}
+        />
+        {
+          showCompleted == true && (
+            <TaskTable tasks={tasksItems} toggleTask={toggleTask} showCompleted={showCompleted} />
+          )
+        }
+      </div>
+    </main>
   )
 }
 

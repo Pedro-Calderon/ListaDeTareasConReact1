@@ -19,8 +19,8 @@ export const TaskTable = ({ tasks, toggleTask, showCompleted=false }) => {
     }
     return (
 
-        <table>
-            <thead>
+        <table className="table table-dark table-striped table-border border-secondary">
+            <thead className="table-primary">
                 <tr>
                     <th>Task</th>
                 </tr>
