@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 
-export const TaskCreator = () => {
-    const [nuevaTarea, setNuevaTarea] = useState()
-//no refresca la pagina
+export const TaskCreator = ({createNewTask}) => {
+
+    const [nuevaTarea, setNuevaTarea] = useState('')
+//no refresca la pagina y Limpia el input
 const handleSubmit = (e) => {
     e.preventDefault();
-    localStorage.setItem('tarea', nuevaTarea)
+    createNewTask(nuevaTarea)
+    localStorage.setItem('task', nuevaTarea)
     setNuevaTarea('')
 
 }
