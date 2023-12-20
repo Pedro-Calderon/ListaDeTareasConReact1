@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './App.css';
 import { TaskCreator } from './Components/TaskCreator'
+import { TaskTable } from './Components/TaskTable'
 
 function App() {
   const [tasksItems, setTaskItems] = useState([])
@@ -10,7 +11,14 @@ function App() {
       setTaskItems([...tasksItems, { name: taskName, done: false }])
     }
   }
-  
+
+  const toggleTask = (task) => {
+
+    setTaskItems(
+      tasksItems.map((t) => (t.name == task.name ? { ...t, done: !t.done } : t))
+    )
+  }
+
   useEffect(() => {
     let data = localStorage.getItem('tasks')
     if (data) {
@@ -27,23 +35,8 @@ function App() {
   return (
     <div className='App'>
       <TaskCreator createNewTask={createNewTask} />
-
-      <table>
-        <thead>
-          <tr>
-            <th>Task</th>
-          </tr>
-        </thead>
-        <tbody>
-          {tasksItems.map((task) => (
-            <tr key={task.name}>
-              <td>
-                {task.name}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <TaskTable tasks={tasksItems} toggleTask={toggleTask} />
+      <TaskTable tasks={tasksItems} toggleTask={toggleTask} showCompleted={true}/>
 
 
     </div>
